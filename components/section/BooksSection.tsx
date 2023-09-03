@@ -1,16 +1,15 @@
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { PlusIcon, GridIcon, ListBulletIcon, ChevronRightIcon } from "@radix-ui/react-icons"
+import { ChevronRightIcon } from "@radix-ui/react-icons"
 import { Separator } from "@/components/ui/separator"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Book, BookArtwork } from "@/components/custom-ui/BookCover"
-import Link from "next/link"
-import { useState } from "react"
-import NewBook from "../action/NewBook"
+import BooksControl from "@/components/action/BooksControl"
 
 export default function BooksSection() {
    return (
       <>
-         <div className="max-w-5xl mx-auto px-4">
+         <div className="">
             <div className="bg-background space-y-6">
                <BooksControl />
 
@@ -35,7 +34,7 @@ export default function BooksSection() {
                               <Button variant="ghost" asChild>
                                  <Link href="/">
                                     <span>See more</span>
-                                    <ChevronRightIcon className="mr-2 h-4 w-4" />
+                                    <ChevronRightIcon className="ml-2 h-4 w-4" />
                                  </Link>
                               </Button>
                            </div>
@@ -47,30 +46,6 @@ export default function BooksSection() {
             </div>
          </div>
       </>
-   )
-}
-
-const BooksControl = () => {
-   const [view, setView] = useState<"list" | "grid">("grid")
-
-   const viewHandler = () => {
-      setView((prev) => (prev === "grid" ? "list" : "grid"))
-   }
-
-   return (
-      <div className="flex items-center justify-between">
-         <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-semibold tracking-tight">My Books</h2>
-         </div>
-
-         <div className="ml-auto space-x-2">
-            <Button onClick={viewHandler} variant="outline" size="icon">
-               {view === "list" ? <GridIcon className="h-4 w-4" /> : <ListBulletIcon className="h-4 w-4" />}
-            </Button>
-
-            <NewBook />
-         </div>
-      </div>
    )
 }
 
