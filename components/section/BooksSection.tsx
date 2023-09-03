@@ -32,7 +32,7 @@ export default function BooksSection() {
                         <div className="w-60 aspect-[3/4] rounded-md  flex items-center justify-center">
                            <div className="">
                               <Button variant="ghost" asChild>
-                                 <Link href="/">
+                                 <Link href="/author/books">
                                     <span>See more</span>
                                     <ChevronRightIcon className="ml-2 h-4 w-4" />
                                  </Link>
