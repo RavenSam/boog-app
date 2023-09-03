@@ -41,7 +41,7 @@ function AllBooksSection() {
    )
 }
 
-export const RecentBook: Book[] = [
+const RecentBook: Book[] = [
    {
       name: "React Rendezvous",
       artist: "Ethan Byte",
