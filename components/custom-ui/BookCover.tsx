@@ -1,8 +1,10 @@
-import Image from "next/image"
+import Image from "next/image" 
+import Link from "next/link" 
 
 import { cn } from "@/lib/utils"
 
 export interface Book {
+   id:number,
    name: string
    artist: string
    cover: string
@@ -15,10 +17,14 @@ interface BookArtworkProps extends React.HTMLAttributes<HTMLDivElement> {
    height?: number
 }
 
-export function BookArtwork({ book, aspectRatio = "portrait", width, height, className, ...props }: BookArtworkProps) {
+export function BookArtwork({ book, aspectRatio = "portrait", width, height, className }: BookArtworkProps) {
+
    return (
-      <div className={cn("space-y-3", className)} {...props}>
-         <div className="overflow-hidden rounded-md">
+      <Link 
+         href={'/author/books/' + book.id}
+         className={cn("space-y-3 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2", className)} 
+         >
+         <div className="overflow-hidden rounded-lg">
             <Image
                src={book.cover}
                alt={book.name}
@@ -35,6 +41,6 @@ export function BookArtwork({ book, aspectRatio = "portrait", width, height, cla
             <h3 className="font-medium leading-none">{book.name}</h3>
             <p className="text-xs text-muted-foreground">{book.artist}</p>
          </div>
-      </div>
+      </Link>
    )
 }
