@@ -22,7 +22,7 @@ export default function NewBook() {
                <div className="grid gap-4 py-4">
                   <div className="grid w-full max-w-sm items-center gap-1.5">
                      <Label htmlFor="title">Title</Label>
-                     <Input type="text" id="title" name="title" placeholder="title" />
+                     <Input type="text" id="title" name="title" placeholder="Book's title" />
                   </div>
 
                   <div className="grid w-full gap-1.5">
