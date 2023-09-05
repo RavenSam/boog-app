@@ -3,6 +3,11 @@ import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PlusIcon } from "@radix-ui/react-icons";
+import BookTabChapters from "@/components/section/BookTabChapters";
+import BookTabCharacters from "@/components/section/BookTabCharacters";
+import BookTabPlaces from "@/components/section/BookTabPlaces";
+import BookTabNotes from "@/components/section/BookTabNotes";
+import BookTabDescription from "@/components/section/BookTabDescription";
 
 export default function SingleBookPage() {
    return (
@@ -46,6 +51,10 @@ function BookHeader() {
                height={330}
                className="w-full h-full block object-cover transition-all"
             />
+         </div>
+
+         <div className="absolute top-0 right-0 p-4">
+            settings
          </div>
 
          <div className="p-4 space-y-6 flex-grow">
@@ -94,11 +103,11 @@ function BookTabs() {
          </TabsList>
 
          <div className="p-4">
-            <TabsContent value="description">Description...</TabsContent>
-            <TabsContent value="chapters">Chapters...</TabsContent>
-            <TabsContent value="characters">Characters...</TabsContent>
-            <TabsContent value="places">Places...</TabsContent>
-            <TabsContent value="notes">Notes...</TabsContent>
+            <TabsContent value="description"><BookTabDescription/></TabsContent>
+            <TabsContent value="chapters"><BookTabChapters/></TabsContent>
+            <TabsContent value="characters"><BookTabCharacters/></TabsContent>
+            <TabsContent value="places"><BookTabPlaces/></TabsContent>
+            <TabsContent value="notes"><BookTabNotes/></TabsContent>
          </div>
       </Tabs>
    );
