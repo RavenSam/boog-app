@@ -191,9 +191,20 @@ export const columns: ColumnDef<Chapter>[] = [
    {
     accessorKey: "updated",
     header: "Updated",
-    cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("updated")}</div>
-    ),
+    cell: ({ row }) => {
+       return (
+          <div className="capitalize">{row.getValue("updated")}</div>
+       )
+    },
+  },
+  {
+    accessorKey: "createdAt",
+    header: "Created",
+    cell: ({ row }) => {
+       return (
+          <div className="capitalize">{row.getValue("createdAt")}</div>
+       )
+    },
   },
   {
     id: "actions",
@@ -224,8 +235,7 @@ export function DataTableDemo() {
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   )
-  const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
+  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({ updated:false, createdAt:false })
   const [rowSelection, setRowSelection] = React.useState({})
 
   const table = useReactTable({
