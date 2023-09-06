@@ -17,7 +17,7 @@ import { ArrowUpDown, ChevronDown, MoreHorizontal, Settings2, Edit2,  Trash } fr
 
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
-import DeleteChapter from "@/components/action/DeleteChapter"
+import { DeleteChapterToast } from "@/components/action/DeleteChapter"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -224,12 +224,17 @@ export const columns: ColumnDef<Chapter>[] = [
                </Button>
              </DropdownMenuTrigger>
              <DropdownMenuContent align="end">
-               <DropdownMenuItem ><Edit2 className="h-4 w-4 mr-2" /> Edit</DropdownMenuItem>
-               <DropdownMenuItem onSelect={() => setShowDeleteDialog(true)} ><Trash className="h-4 w-4 mr-2" /> Delete</DropdownMenuItem>
+               <DropdownMenuItem >
+                  <Edit2 className="h-4 w-4 mr-2" /> Edit
+               </DropdownMenuItem>
+
+
+               <DeleteChapterToast chapterId={chapter.id} />
+        
              </DropdownMenuContent>
            </DropdownMenu>
-           
-           <DeleteChapter open={showDeleteDialog} onOpenChange={setShowDeleteDialog} />
+
+        
         </>
       )
     },

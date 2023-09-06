@@ -9,13 +9,21 @@ import {
 	AlertDialogTitle,
 	AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { ToastAction } from "@/components/ui/toast";
+import { useToast } from "@/components/ui/use-toast";
+import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
+import { Trash } from "lucide-react";
 
-interface DeleteChapterProps {
-	open: boolean
-	onOpenChange:React.Dispatch<React.SetStateAction<boolean>>
+interface DeleteChapterDialogProps {
+	open: boolean;
+	onOpenChange: React.Dispatch<React.SetStateAction<boolean>>;
+	chapterId: string;
 }
 
-export default function DeleteChapter({ open, onOpenChange }: DeleteChapterProps) {
+interface DeleteChapterToastProps {
+	chapterId: string;
+}
+export function DeleteChapterDialog({ open, onOpenChange }: DeleteChapterDialogProps) {
 	return (
 		<AlertDialog open={open} onOpenChange={onOpenChange}>
 			<AlertDialogContent>
@@ -28,9 +36,28 @@ export default function DeleteChapter({ open, onOpenChange }: DeleteChapterProps
 				</AlertDialogHeader>
 				<AlertDialogFooter>
 					<AlertDialogCancel>Cancel</AlertDialogCancel>
-					<AlertDialogAction onClick={() => onOpenChange(false)}>Delete</AlertDialogAction>
+					<AlertDialogAction onClick={() => onOpenChange(false)}>
+						Delete
+					</AlertDialogAction>
 				</AlertDialogFooter>
 			</AlertDialogContent>
 		</AlertDialog>
+	);
+}
+
+export function DeleteChapterToast({ chapterId }: DeleteChapterToastProps) {
+	const { toast } = useToast();
+
+	const handleDelte = () => {
+		toast({
+			description: `Chapter ${chapterId} deleted`,
+			action: <ToastAction altText="undo">Undo</ToastAction>,
+		});
+	};
+
+	return (
+		<DropdownMenuItem onSelect={handleDelte}>
+			<Trash className="h-4 w-4 mr-2" /> Delete
+		</DropdownMenuItem>
 	);
 }
