@@ -17,6 +17,7 @@ import { ArrowUpDown, ChevronDown, MoreHorizontal, Settings2, Edit2,  Trash } fr
 
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
+import DeleteChapter from "@/components/action/DeleteChapter"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -210,21 +211,26 @@ export const columns: ColumnDef<Chapter>[] = [
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
+      const [showDeleteDialog, setShowDeleteDialog] = React.useState(false)
       const chapter = row.original
 
       return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0 float-right">
-              <span className="sr-only">Open menu</span>
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem ><Edit2 className="h-4 w-4 mr-2" /> Edit</DropdownMenuItem>
-            <DropdownMenuItem ><Trash className="h-4 w-4 mr-2" /> Delete</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+         <>
+           <DropdownMenu>
+             <DropdownMenuTrigger asChild>
+               <Button variant="ghost" className="h-8 w-8 p-0 float-right">
+                 <span className="sr-only">Open menu</span>
+                 <MoreHorizontal className="h-4 w-4" />
+               </Button>
+             </DropdownMenuTrigger>
+             <DropdownMenuContent align="end">
+               <DropdownMenuItem ><Edit2 className="h-4 w-4 mr-2" /> Edit</DropdownMenuItem>
+               <DropdownMenuItem onSelect={() => setShowDeleteDialog(true)} ><Trash className="h-4 w-4 mr-2" /> Delete</DropdownMenuItem>
+             </DropdownMenuContent>
+           </DropdownMenu>
+           
+           <DeleteChapter open={showDeleteDialog} onOpenChange={setShowDeleteDialog} />
+        </>
       )
     },
   },
