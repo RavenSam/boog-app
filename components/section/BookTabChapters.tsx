@@ -1,5 +1,7 @@
 "use client"
 
+import Link from "next/link"
+import { useParams } from 'next/navigation'
 import * as React from "react"
 import {
   ColumnDef,
@@ -211,7 +213,7 @@ export const columns: ColumnDef<Chapter>[] = [
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const [showDeleteDialog, setShowDeleteDialog] = React.useState(false)
+      const { id } = useParams()
       const chapter = row.original
 
       return (
@@ -224,8 +226,10 @@ export const columns: ColumnDef<Chapter>[] = [
                </Button>
              </DropdownMenuTrigger>
              <DropdownMenuContent align="end">
-               <DropdownMenuItem >
-                  <Edit2 className="h-4 w-4 mr-2" /> Edit
+               <DropdownMenuItem asChild>
+                   <Link  href={`/author/books/${id}/edit/${chapter.id}`}>
+                      <Edit2 className="h-4 w-4 mr-2" /> Edit
+                   </Link>
                </DropdownMenuItem>
 
 
