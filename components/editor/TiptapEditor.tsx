@@ -1,23 +1,30 @@
 'use client'
 
-import { useEditor, EditorContent } from '@tiptap/react'
-
+import HoverMenu from '@/components/editor/HoverMenu'
+import { useEditor, EditorContent, BubbleMenu } from '@tiptap/react'
 
 import StarterKit from '@tiptap/starter-kit'
 import Typography from "@tiptap/extension-typography"
 import Underline from "@tiptap/extension-underline"
+
+
+
 
 export default function TiptapEditor () {
   const editor = useEditor({
     extensions: [
       StarterKit,
       Typography,
-      Underline,
+      Underline
     ],
     content: '<p>Hello World! 🌎️</p>',
   })
 
   return (
-    <EditorContent editor={editor} />
+	  	<>
+		  	<HoverMenu editor={editor} />
+
+		   <EditorContent editor={editor} />
+	   </>
   )
 }
