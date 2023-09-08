@@ -1,11 +1,19 @@
 import Navbar from "@/components/Navbar"
 
-export default function AuthorLayout({ children }: { children: React.ReactNode }) {
+interface LayoutProps {
+    children: React.ReactNode, 
+    params:{ id: string, chapterId: string } 
+}
+
+export default function AuthorLayout({ children, params }: LayoutProps ) {
+
    return (
       <>
-         <Navbar />
+         { !params.chapterId && <Navbar /> }
 
-         {children}
+         <div className={`${!params.chapterId && "ml-16"}`}>
+            {children}
+         </div>
       </>
    )
 }

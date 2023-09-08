@@ -32,7 +32,7 @@ const ViewCtr = () => {
    if (pathname !== "/author/books") return null
 
    return (
-      <Button onClick={viewHandler} variant="outline" size="icon">
+      <Button onClick={viewHandler} variant="outline" size="icon" aria-label={view === "list" ? "View list" : "View grid"}>
          {view === "list" ? <GridIcon className="h-4 w-4" /> : <ListBulletIcon className="h-4 w-4" />}
       </Button>
    )

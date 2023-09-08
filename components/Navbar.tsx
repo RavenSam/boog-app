@@ -1,11 +1,12 @@
 "use client"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
+import { Settings, Search, LayoutDashboard, BookCopy, StickyNoteIcon } from "lucide-react"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import { Separator } from "@/components/ui/separator"
 import {
    DropdownMenu,
    DropdownMenuContent,
@@ -17,55 +18,45 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 const navLinks = [
-   { label: "Overview", href: "/author" },
-   { label: "Books", href: "/author/books" },
-   { label: "Notes", href: "/author/notes" },
+   { label: "Overview", icon: LayoutDashboard, href: "/author" },
+   { label: "Books", icon: BookCopy, href: "/author/books" },
+   { label: "Notes", icon: StickyNoteIcon, href: "/author/notes" },
 ]
 
 export default function Navbar() {
+
    return (
-      <div className="">
-         <div className="flex h-16 items-center px-4 max-w-7xl mx-auto">
-            <MainNav className="mx-6" />
+ 
+         <div className="w-16 fixed left-0 top-0 bottom-0">
 
-            <div className="ml-auto flex items-center space-x-4">
-               <div>
-                  {/* Later oon change to Command component intead of input*/}
-                  {/* https://ui.shadcn.com/docs/components/command */}
-                  <Input type="search" placeholder="Search..." className="md:w-[100px] lg:w-[300px]" />
+            <div className="flex flex-col items-center h-full py-4 px-2">
+                <Button variant="ghost" className="my-3" size="icon" aria-label="Search">
+                  <Search className="h-5 w-5" />
+                </Button>
+
+                <Separator/>
+
+               {navLinks.map((item) => (
+                  <Button variant="ghost" className="mt-3" key={item.label} size="icon" aria-label={item.label} asChild>
+                     <Link href={item.href}>
+                        <item.icon className="h-5 w-5" />
+                     </Link>
+                  </Button>
+               ))}
+               
+
+               <div className="mt-auto">
+                  <UserNav />
                </div>
-
-               <UserNav />
             </div>
          </div>
-      </div>
-   )
-}
-
-function MainNav({ className, ...props }: React.HTMLAttributes<HTMLElement>) {
-   const pathname = usePathname()
-
-   return (
-      <nav className={cn("flex items-center space-x-4 lg:space-x-6", className)} {...props}>
-         {navLinks.map((item) => (
-            <Link
-               key={item.label}
-               href={item.href}
-               className={cn(
-                  "text-sm font-medium",
-                  pathname !== item.href ? "text-muted-foreground transition-colors hover:text-primary" : ""
-               )}
-            >
-               {item.label}
-            </Link>
-         ))}
-      </nav>
+   
    )
 }
 
 function UserNav() {
    return (
-      <DropdownMenu>
+      <DropdownMenu > 
          <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="relative h-10 w-10 rounded-full">
                <Avatar className="h-10 w-10">
@@ -74,7 +65,7 @@ function UserNav() {
                </Avatar>
             </Button>
          </DropdownMenuTrigger>
-         <DropdownMenuContent className="w-56" align="end" forceMount>
+         <DropdownMenuContent side="right" className="w-56" align="end" forceMount>
             <DropdownMenuLabel className="font-normal">
                <div className="flex flex-col space-y-1">
                   <p className="text-sm font-medium leading-none">john</p>
