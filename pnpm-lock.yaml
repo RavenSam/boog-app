@@ -50,6 +50,9 @@ dependencies:
   '@tanstack/react-table':
     specifier: ^8.9.3
     version: 8.9.3(react-dom@18.2.0)(react@18.2.0)
+  '@tiptap/core':
+    specifier: ^2.1.8
+    version: 2.1.8(@tiptap/pm@2.1.8)
   '@tiptap/extension-placeholder':
     specifier: ^2.1.8
     version: 2.1.8(@tiptap/core@2.1.8)(@tiptap/pm@2.1.8)
@@ -68,6 +71,9 @@ dependencies:
   '@tiptap/starter-kit':
     specifier: ^2.1.8
     version: 2.1.8(@tiptap/pm@2.1.8)
+  '@tiptap/suggestion':
+    specifier: ^2.1.8
+    version: 2.1.8(@tiptap/core@2.1.8)(@tiptap/pm@2.1.8)
   '@types/node':
     specifier: 20.5.8
     version: 20.5.8
@@ -116,6 +122,9 @@ dependencies:
   tailwindcss-animate:
     specifier: ^1.0.7
     version: 1.0.7(tailwindcss@3.3.3)
+  tippy.js:
+    specifier: ^6.3.7
+    version: 6.3.7
   typescript:
     specifier: 5.2.2
     version: 5.2.2
@@ -1510,6 +1519,16 @@ packages:
       '@tiptap/extension-text': 2.1.8(@tiptap/core@2.1.8)
     transitivePeerDependencies:
       - '@tiptap/pm'
+    dev: false
+
+  /@tiptap/suggestion@2.1.8(@tiptap/core@2.1.8)(@tiptap/pm@2.1.8):
+    resolution: {integrity: sha512-3QypKFCeZSRrjgSz0n0JE5SimisolaxDZn45GGtkXuJWmKGCmsJw9UsXeH3S9ZuP3pvPImL0P9uAHlhRReRw1w==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+      '@tiptap/pm': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.1.8(@tiptap/pm@2.1.8)
+      '@tiptap/pm': 2.1.8
     dev: false
 
   /@types/json5@0.0.29:
