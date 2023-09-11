@@ -8,6 +8,11 @@ export interface Book {
    name: string
    artist: string
    cover: string
+   chapter?: []
+   words_count?: number
+   // need to make progress of the book [progress % = (word_count * 100) / leght]
+   length_metric?: "chapters" | "word count" | "pages"
+   length?: number 
 }
 
 interface BookArtworkProps extends React.HTMLAttributes<HTMLDivElement> {
