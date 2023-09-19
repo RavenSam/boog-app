@@ -214,6 +214,10 @@ export const columns: ColumnDef<Chapter>[] = [
                         </Link>
                      </DropdownMenuItem>
 
+                     <DropdownMenuItem onSelect={() => setShowDeleteDialog(true)}>
+                        <Trash className="h-4 w-4 mr-2" /> Delete
+                     </DropdownMenuItem>
+
                      {/* <DeleteChapterToast chapterId={chapter.id} /> */}
 
                      <DeleteChapterDialog open={open} onOpenChange={onOpenChange} />
