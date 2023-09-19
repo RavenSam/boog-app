@@ -220,7 +220,7 @@ export const columns: ColumnDef<Chapter>[] = [
 
                      {/* <DeleteChapterToast chapterId={chapter.id} /> */}
 
-                     <DeleteChapterDialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog} />
+                     <DeleteChapterDialog chapterId={id} open={showDeleteDialog} onOpenChange={setShowDeleteDialog} />
                   </DropdownMenuContent>
                </DropdownMenu>
             </>
