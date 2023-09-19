@@ -196,7 +196,7 @@ export const columns: ColumnDef<Chapter>[] = [
       cell: ({ row }) => {
          const { id } = useParams()
          const chapter = row.original
-         const [open, onOpenChange] = React.useState(false)
+         const [showDeleteDialog, setShowDeleteDialog] = React.useState(false)
 
          return (
             <>
@@ -220,7 +220,7 @@ export const columns: ColumnDef<Chapter>[] = [
 
                      {/* <DeleteChapterToast chapterId={chapter.id} /> */}
 
-                     <DeleteChapterDialog open={open} onOpenChange={onOpenChange} />
+                     <DeleteChapterDialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog} />
                   </DropdownMenuContent>
                </DropdownMenu>
             </>
