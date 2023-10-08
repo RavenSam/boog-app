@@ -6,12 +6,11 @@ import { Button } from "@/components/ui/button"
 import { DownloadIcon, GearIcon } from "@radix-ui/react-icons"
 import BookTabs from "@/components/section/BookTabs"
 
-
 export default function SingleBookPage() {
    return (
       <>
-         <main className="max-w-7xl mx-auto px-4">
-            <section className="mt-10 relative">
+         <main className="">
+            <section className="relative">
                <BookHeader />
                <div className="absolute inset-0 overflow-hidden rounded-lg -z-[1]">
                   <Image
@@ -94,4 +93,3 @@ function BookHeader() {
       </div>
    )
 }
-
